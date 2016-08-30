@@ -6,6 +6,7 @@ echo fixed area.
 echo
 # needs bc and jq (apt-install if needed)
 
+# H O M E
 # Latitude and longitude of reference (origin): home rhm
 a_lat=20.68984931	
 a_lon=-103.444991036		
@@ -13,11 +14,32 @@ a_lon=-103.444991036
 # Latitude and longitude of reference (origin): university iteso
 b_lat=0
 b_lon=0
+j=0
+
+
+# U I V E R S I T Y
+# Latitude and longitude of reference (origin): home rhm
+# Cafedela:{lat:20.6053712272	, lon:-103.415487669}
+# Estacion:{lat: , lon: }
+# Edif.J  :{lat: , lon: }
+# Edif.T	  :{lat: , lon: }
+# Edif.W  :{lat: , lon: }
+# Edif.D  :{lat: , lon: }
+# Edif.C  :{lat: , lon: }
+# Edif.GYM:{lat: , lon: }
+# ombligo :{lat: , lon: }
+
+a_latu=20.68984931	
+a_lonu=-103.444991036		
+
+# Latitude and longitude of reference (origin): university iteso
+b_latu=0
+b_lonu=0
+ju=0
 
 
 k=1
 i=0
-j=0
 while true
 do
     echo --------------------------------------
