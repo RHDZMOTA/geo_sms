@@ -45,6 +45,8 @@ do
     echo --------------------------------------
     echo recording... -- iter.num: $k
     
+    sleep 30
+    
     # Get the current location using termux 
     loc=$(termux-location)
 
