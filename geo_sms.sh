@@ -119,7 +119,7 @@ do
         termux-sms-send -n 3314105505 $(echo ${ans})
         termux-sms-send -n 3310097615 $(echo ${ans})
         leave_home=0
-    
+    fi
     
     
     if [ $(echo "${lat} > ${ls_lat}" | bc) -eq 1 ] && [ $(echo "${lon} > ${ls_lon}" | bc) -eq 1 ];
