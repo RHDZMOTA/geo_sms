@@ -45,7 +45,7 @@ do
     echo --------------------------------------
     echo recording... -- iter.num: $k
     
-    sleep 30
+    sleep 50
     
     # Get the current location using termux 
     loc=$(termux-location)
@@ -88,6 +88,40 @@ do
         fi
     fi
     # conditional to leave zone: home
+    if [ $(echo "${lat} > ${ls_lat}" | bc) -eq 1 ] || [ $(echo "${lon} > ${ls_lon}" | bc) -eq 1 ];
+    then
+        if [ "$i" -ne "$j" ];
+        then
+            # leaving home, turn on leave_home
+            leave_home=1
+        fi
+    fi
+    
+    if [ $(echo "	${lat} < ${li_lat}" | bc) -eq 1 ] || [ $(echo "${lon} < ${li_lon}" | bc) -eq 1 ];
+    then
+        if [ "$i" -ne "$j" ];
+        then
+            # leaving home, turn on leave_home
+            leave_home=1
+        fi
+    fi
+    
+    if [ "$leave_home" -eq 1 ];
+    then
+        j=$(($j-1))
+        echo 
+        echo Just leaving home. Reseting 'k' variable...
+        k=0
+        echo Done.
+        echo	
+        ans=$(echo ${day}: Leaving		 home aprox. at ${time}. Coord - {lat.${lat}, lon.${lon}, alt.${alt}})
+        #echo $ans
+        termux-sms-send -n 3314105505 $(echo ${ans})
+        termux-sms-send -n 3310097615 $(echo ${ans})
+        leave_home=0
+    
+    
+    
     if [ $(echo "${lat} > ${ls_lat}" | bc) -eq 1 ] && [ $(echo "${lon} > ${ls_lon}" | bc) -eq 1 ];
     then
         if [ $(echo "	${lat} < ${li_lat}" | bc) -eq 1 ] && [ $(echo "${lon} < ${li_lon}" | bc) -eq 1 ];
