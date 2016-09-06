@@ -1,5 +1,5 @@
 echo
-echo ::::::::::::::: Log Location/Position ::::::::::::::: 
+echo ::::::::::::: Log Location/Position ::::::::::::: 
 echo This program will record the device s postion
 echo and evaluate whenever you go in or out of a
 echo fixed area.
