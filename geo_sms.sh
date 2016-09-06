@@ -37,6 +37,8 @@ b_latu=0
 b_lonu=0
 ju=0
 
+# variables for leaving 
+leave_home=0
 
 k=1
 i=0
@@ -106,7 +108,7 @@ do
         fi
     fi
     
-    if [ "$leave_home" -eq 1 ];
+    if [ "$leave_home" -eq "1" ];
     then
         j=$(($j-1))
         echo 
@@ -122,25 +124,25 @@ do
     fi
     
     
-    if [ $(echo "${lat} > ${ls_lat}" | bc) -eq 1 ] && [ $(echo "${lon} > ${ls_lon}" | bc) -eq 1 ];
-    then
-        if [ $(echo "	${lat} < ${li_lat}" | bc) -eq 1 ] && [ $(echo "${lon} < ${li_lon}" | bc) -eq 1 ];
-        then
-            if [ "$i" -ne "$j" ];
-            then
-                j=$(($j-1))
-                echo 
-                echo Just leaving home. Reseting 'k' variable...
-                k=0
-                echo Done.
-                echo	
-                ans=$(echo ${day}: Leaving		 home aprox. at ${time}. Coord - {lat.${lat}, lon.${lon}, alt.${alt}})
-                #echo $ans
-                termux-sms-send -n 3314105505 $(echo ${ans})
-                termux-sms-send -n 3310097615 $(echo ${ans})
-            fi
-        fi
-    fi
+    #if [ $(echo "${lat} > ${ls_lat}" | bc) -eq 1 ] && [ $(echo "${lon} > ${ls_lon}" | bc) -eq 1 ];
+    #then
+    #    if [ $(echo "	${lat} < ${li_lat}" | bc) -eq 1 ] && [ $(echo "${lon} < ${li_lon}" | bc) -eq 1 ];
+    #    then
+    #        if [ "$i" -ne "$j" ];
+    #        then
+    #            j=$(($j-1))
+    #            echo 
+    #            echo Just leaving home. Reseting 'k' variable...
+    #            k=0
+    #            echo Done.
+    #            echo	
+    #            ans=$(echo ${day}: Leaving		 home aprox. at ${time}. Coord - {lat.${lat}, lon.${lon}, alt.${alt}})
+    #            #echo $ans
+    #            termux-sms-send -n 3314105505 $(echo ${ans})
+    #            termux-sms-send -n 3310097615 $(echo ${ans})
+    #        fi
+    #    fi
+    #fi
     
     # U N I V E R S I T Y - I T E S O 
     
