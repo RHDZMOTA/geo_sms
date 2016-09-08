@@ -53,14 +53,7 @@ do
     # General use variables
     
     # Get the current location using termux 
-    # test if the location is available.
-    {	
-        loc=$(termux-location)
-    } || {
-        echo
-        echo warning: unavailable...
-        continue 
-    }
+    loc=$(termux-location)
     
 
     # Save the date and time in variables
@@ -74,7 +67,14 @@ do
     
     echo {lat:$lat, lon:$lon, alt:$alt}
     
-    
+    # Test if the location is available.
+    {	
+        [ $(echo "${lat} > 100000" | bc) -eq 1 ]
+    } || {
+        echo
+        echo warning: unavailable...
+        continue 
+    }
     
     
     
