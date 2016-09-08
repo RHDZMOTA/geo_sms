@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo
 echo ::::::::::::: Log Location/Position ::::::::::::: 
 echo This program will record the device s postion
@@ -51,7 +53,15 @@ do
     # General use variables
     
     # Get the current location using termux 
-    loc=$(termux-location)
+    # test if the location is available.
+    {	
+        loc=$(termux-location)
+    } || {
+        echo
+        echo warning: unavailable...
+        continue 
+    }
+    
 
     # Save the date and time in variables
     day=$(date "+%d-%m-%Y")
@@ -62,6 +72,7 @@ do
     lon=$(echo $loc | jq .longitude)
     alt=$(echo $loc | jq .altitude)
     
+    echo {lat:$lat, lon:$lon, alt:$alt}
     
     
     
