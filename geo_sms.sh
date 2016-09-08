@@ -69,7 +69,7 @@ do
     
     # Test if the location is available.
     {	
-        [ $(echo "${lat} > 100000" | bc) -eq 1 ]
+        [ $(echo "${lat} < 1000000" | bc) -eq 1 ]
     } || {
         echo
         echo warning: unavailable...
